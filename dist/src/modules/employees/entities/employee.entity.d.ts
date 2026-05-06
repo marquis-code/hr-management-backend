@@ -1,0 +1,63 @@
+import { Gender, MaritalStatus, EmploymentType, EmploymentStatus, WorkLocation, InductionStatus } from '../../../common/enums';
+export declare class Employee {
+    id: string;
+    employeeNumber: string;
+    firstName: string;
+    lastName: string;
+    middleName: string;
+    preferredName: string;
+    dateOfBirth: Date;
+    gender: Gender;
+    maritalStatus: MaritalStatus;
+    nationality: string;
+    religion: string;
+    personalEmail: string;
+    workEmail: string;
+    phone: string;
+    alternatePhone: string;
+    profilePhoto: string;
+    address: {
+        street: string;
+        city: string;
+        state: string;
+        country: string;
+        zip: string;
+    };
+    emergencyContact: {
+        name: string;
+        relationship: string;
+        phone: string;
+    };
+    bankDetails: {
+        bankName: string;
+        accountNumber: string;
+        accountName: string;
+        bankCode: string;
+    };
+    taxId: string;
+    pensionId: string;
+    nationalId: string;
+    jobTitle: string;
+    employmentType: EmploymentType;
+    employmentStatus: EmploymentStatus;
+    hireDate: Date;
+    confirmationDate: Date;
+    terminationDate: Date;
+    terminationReason: string;
+    departmentId: string;
+    positionId: string;
+    managerId: string;
+    gradeLevel: string;
+    salaryBand: string;
+    workLocation: WorkLocation;
+    userId: string;
+    subsidiaryId: string;
+    inductionStatus: InductionStatus;
+    manager: Employee;
+    subordinates: Employee[];
+    createdAt: Date;
+    updatedAt: Date;
+    deletedAt: Date;
+    createdBy: string;
+    updatedBy: string;
+}

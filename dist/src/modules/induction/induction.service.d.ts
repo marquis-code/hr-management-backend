@@ -1,0 +1,35 @@
+import { Repository } from 'typeorm';
+import { InductionProgram, InductionSection, InductionLesson, InductionQuestion, EmployeeInduction, SectionProgress } from './entities/induction.entity';
+import { Employee } from '../employees/entities/employee.entity';
+import { CreateInductionProgramDto, UpdateInductionProgramDto, SubmitModuleAssessmentDto, MarkLessonWatchedDto, AddModuleDto, AddLessonDto, AddQuestionDto } from './dto/induction.dto';
+export declare class InductionService {
+    private programRepo;
+    private sectionRepo;
+    private lessonRepo;
+    private questionRepo;
+    private enrollmentRepo;
+    private progressRepo;
+    private employeeRepo;
+    constructor(programRepo: Repository<InductionProgram>, sectionRepo: Repository<InductionSection>, lessonRepo: Repository<InductionLesson>, questionRepo: Repository<InductionQuestion>, enrollmentRepo: Repository<EmployeeInduction>, progressRepo: Repository<SectionProgress>, employeeRepo: Repository<Employee>);
+    createProgram(dto: CreateInductionProgramDto, creatorId: string): Promise<InductionProgram>;
+    findAllPrograms(): Promise<InductionProgram[]>;
+    findProgramById(id: string): Promise<InductionProgram>;
+    findProgramsBySubsidiary(subsidiaryId: string): Promise<InductionProgram[]>;
+    updateProgram(id: string, dto: UpdateInductionProgramDto): Promise<InductionProgram>;
+    publishProgram(id: string): Promise<InductionProgram>;
+    deleteProgram(id: string): Promise<void>;
+    addModule(programId: string, dto: AddModuleDto): Promise<InductionSection>;
+    addLesson(sectionId: string, dto: AddLessonDto): Promise<InductionLesson>;
+    addQuestion(sectionId: string, dto: AddQuestionDto): Promise<InductionQuestion>;
+    deleteModule(sectionId: string): Promise<void>;
+    deleteLesson(lessonId: string): Promise<void>;
+    deleteQuestion(questionId: string): Promise<void>;
+    enrollEmployee(employeeId: string, programId: string): Promise<EmployeeInduction>;
+    autoEnrollNewEmployee(employeeId: string, subsidiaryId: string): Promise<EmployeeInduction | null>;
+    getEnrollmentDashboard(): Promise<any[]>;
+    getMyInduction(employeeId: string): Promise<EmployeeInduction | null>;
+    markLessonWatched(employeeId: string, dto: MarkLessonWatchedDto): Promise<SectionProgress>;
+    submitModuleAssessment(employeeId: string, dto: SubmitModuleAssessmentDto): Promise<SectionProgress>;
+    private recalculateProgress;
+    private getEnrollmentDetails;
+}
